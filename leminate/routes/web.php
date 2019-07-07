@@ -21,6 +21,14 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/adminhome', 'Admin\AdminController@index')->name('adminhome')->middleware('authenticateAdmin');
 
+//user
+Route::get('/adminhome/show_user', 'Admin\AdminController@show_user')->name('show_user')->middleware('authenticateAdmin');
+
+//categories
+Route::get('/adminhome/show_category', 'Admin\AdminController@show_category')->name('show_category')->middleware('authenticateAdmin');
+Route::post('/adminhome/show_category', 'Admin\AdminController@add_category')->name('add_category')->middleware('authenticateAdmin');
+Route::delete('/adminhome/show_category', 'Admin\AdminController@del_category')->name('del_category')->middleware('authenticateAdmin');
+
 Route::get('/userhome', 'User\UserController@index')->name('userhome')->middleware('authenticateUser');
 
 Route::get('/userhome/contact', 'User\ContactController@index')->name('contact')->middleware('authenticateUser');;

@@ -4,6 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use DB;
+use App\Categorie;
+use App\User;
 
 class AdminController extends Controller
 {
@@ -11,79 +14,36 @@ class AdminController extends Controller
     {
         $this->middleware('auth');
     }
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
         return view('/admin/index');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    //user-CRUD
+    public function show_user()
     {
-        //
+        $user = DB::table('users')->where('is_admin', '=', 0)->get();
+        return view('/admin/show_user', compact('user'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    //categories-CRUD
+    public function show_category()
     {
-        //
+        $category = Categorie::all();
+        return view('/admin/show_category', compact('category'));
+    }
+    public function add_category(Request $request)
+    {
+        $data = ['name' => $request->name];
+        DB::table('categories')->insert($data);
+        return redirect(route('show_category'));
+    }
+    public function del_category(Request $request)
+    {
+        DB::table('categories')->where('id', '=', $request->id)->delete();
+        return redirect(route('add_category'));
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
+    
 }
