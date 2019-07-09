@@ -20,8 +20,11 @@
         <!-- Begin Page Content -->
         <div class="container-fluid">
 
-          <!-- Page Heading -->
-          <h1 class="h3 mb-2 text-gray-800">Users</h1>
+          <div class="d-sm-flex align-items-center justify-content-between mb-4">
+            <h1 class="h3 mb-0 text-gray-800">Products</h1>
+            <a href="{{route('add_product_view_page')}}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">Add
+              Product</a>
+          </div>
 
           <!-- DataTales Example -->
           <div class="card shadow mb-4">
@@ -30,16 +33,18 @@
             </div>
             <div class="card-body">
               <div class="table-responsive">
-                @if (count($user) > 0)
+                @if ($product->count() > 0)
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                   <thead>
                     <tr>
                       <th>No</th>
                       <th>Name</th>
-                      <th>Email</th>
-                      <th>Address</th>
-                      <th>DOB</th>
-                      <th>Mobile</th>
+                      <th>Description</th>
+                      <th>QOH</th>
+                      <th>Price</th>
+                      <th>Category</th>
+                      <th>Color</th>
+                      <th>Design</th>
                       <th>Action</th>
                     </tr>
                   </thead>
@@ -47,36 +52,40 @@
                     <tr>
                       <th>No</th>
                       <th>Name</th>
-                      <th>Email</th>
-                      <th>Address</th>
-                      <th>DOB</th>
-                      <th>Mobile</th>
+                      <th>Description</th>
+                      <th>QOH</th>
+                      <th>Price</th>
+                      <th>Category</th>
+                      <th>Color</th>
+                      <th>Design</th>
                       <th>Action</th>
                     </tr>
                   </tfoot>
                   <tbody>
-                    @foreach ($user as $user)
+                    @foreach ($product as $index => $product)
                     <tr>
                       <td>{{ $loop->iteration }}</td>
-                      <td>{{$user->name}}</td>
-                      <td>{{$user->email}}</td>
-                      <td>{{$user->address}}</td>
-                      <td>{{$user->dob}}</td>
-                      <td>{{$user->m_no}}</td>
+                      <td>{{$product->name}}</td>
+                      <td>{{$product->description}}</td>
+                      <td>{{$product->qoh}}</td>
+                      <td>{{$product->price}}</td>
+                      <td>{{$arr_category[$index]->name}}</td>
+                      <td>{{$arr_color[$index]->name}}</td>
+                      <td>{{$arr_design[$index]->name}}</td>
                       <td>
 
                         <form style="display: inline" id="firstForm" method="post"
-                          action="{{route('update_user_page')}}">
+                          action="{{route('update_product_page')}}">
                           @csrf
-                          <input type="hidden" name="id" value="{{$user->id}}">
+                          <input type="hidden" name="id" value="{{$product->id}}">
                           <button class="btn btn-primary btn-circle btn-sm" type="submit">
                             <i class="fas fa-edit"></i>
                           </button>
                         </form>
-                        <form style="display: inline" method="post" action="{{route('del_user')}}">
+                        <form style="display: inline" method="post" action="{{route('del_product')}}">
                           @csrf
                           @method('delete')
-                          <input type="hidden" name="id" value="{{$user->id}}">
+                          <input type="hidden" name="id" value="{{$product->id}}">
                           <button class="btn btn-danger btn-circle btn-sm" type="submit">
                             <i class="fas fa-trash"></i>
                           </button>
