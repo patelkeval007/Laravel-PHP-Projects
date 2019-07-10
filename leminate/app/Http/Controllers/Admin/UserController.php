@@ -9,17 +9,17 @@ use App\User;
 
 class UserController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function show_user()
     {
         $user = DB::table('users')->where('is_admin', '=', 0)->get();
         return view('/admin/show_user', compact('user'));
     }
-    // public function add_user(Request $request)
-    // {
-    //     $data = ['name' => $request->name];
-    //     DB::table('categories')->insert($data);
-    //     return redirect(route('show_category'));
-    // }
+
     public function update_user_view_page(Request $request)
     {
         if ($request->id) {
@@ -29,6 +29,7 @@ class UserController extends Controller
             return redirect(route('show_user'));
         }
     }
+
     public function update_user(Request $request)
     {
         if (DB::table('users')->where('id', '=', $request->id)->update([
@@ -43,6 +44,7 @@ class UserController extends Controller
             return redirect(route('show_user'));
         }
     }
+
     public function del_user(Request $request)
     {
         DB::table('users')->where('id', '=', $request->id)->delete();

@@ -8,6 +8,11 @@ use DB;
 use App\Color;
 class ColorController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function show_color()
     {
         $color = Color::all();

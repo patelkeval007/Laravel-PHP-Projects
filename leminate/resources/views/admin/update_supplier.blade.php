@@ -21,75 +21,37 @@
         <div class="container">
 
           <!-- Page Heading -->
-          <h1 class="h3 mb-2 text-gray-800">Add Product</h1>
-          <form method="post" action="{{route('add_product')}}">
+          <h1 class="h3 mb-2 text-gray-800">Update Supplier Details</h1>
+          <form method="post" action="{{route('update_supplier')}}">
             @csrf
-            <input type="hidden" name="id">
+            @method('put')
+            <input type="hidden" name="id" value="{{$supplier->id}}">
             <div class="form-group row">
               <label for="inputEmail3" class="col-sm-2 col-form-label">Name</label>
               <div class="col-sm-4">
-                <input type="text" name="name" class="form-control" id="inputEmail3" required>
+                <input type="text" name="name" class="form-control" id="inputEmail3" value="{{$supplier->name}}">
               </div>
             </div>
             <div class="form-group row">
-              <label for="inputEmail3" class="col-sm-2 col-form-label">Description</label>
+              <label for="inputEmail3" class="col-sm-2 col-form-label">Address</label>
               <div class="col-sm-4">
-                <input type="text" name="description" class="form-control" id="inputEmail3" required>
+                <input type="text" name="address" class="form-control" id="inputEmail3" value="{{$supplier->address}}">
               </div>
             </div>
             <div class="form-group row">
-              <label for="inputEmail3" class="col-sm-2 col-form-label">QOH</label>
+              <label for="inputEmail3" class="col-sm-2 col-form-label">Mobile</label>
               <div class="col-sm-4">
-                <input type="number" name="qoh" class="form-control" id="inputEmail3" required>
+                <input type="tel" name="m_no" class="form-control" id="inputEmail3" value="{{$supplier->m_no}}">
               </div>
             </div>
-            <div class="form-group row">
-              <label for="inputEmail3" class="col-sm-2 col-form-label">Price</label>
-              <div class="col-sm-4">
-                <input type="number" name="price" class="form-control" id="inputEmail3" required>
-              </div>
-            </div>
-
-            <div class="form-group row">
-              <label for="inputEmail3" class="col-sm-2 col-form-label">Category</label>
-              <div class="col-sm-4">
-                <select id="color" class="custom-select" name="category" required>
-                  <option value="" selected hidden>--- select category ---</option>
-                  @foreach ($category as $category)
-                  <option class="dropdown-item" value="{{$category->id}}">{{$category->name}}</option>
-                  @endforeach
-                </select>
-              </div>
-            </div>
-
-            <div class="form-group row">
-              <label for="inputEmail3" class="col-sm-2 col-form-label">Color</label>
-              <div class="col-sm-4">
-                <select id="color" class="custom-select" name="color" required>
-                  <option value="" selected hidden>--- select color ---</option>
-                  @foreach ($color as $color)
-                  <option class="dropdown-item" value="{{$color->id}}">{{$color->name}}</option>
-                  @endforeach
-                </select>
-              </div>
-            </div>
-            <div class="form-group row">
-              <label for="inputEmail3" class="col-sm-2 col-form-label">Design</label>
-              <div class="col-sm-4">
-                <select id="color" class="custom-select" name="design" required>
-                  <option value="" selected hidden>--- select design ---</option>
-                  @foreach ($design as $design)
-                  <option class="dropdown-item" value="{{$design->id}}">{{$design->name}}</option>
-                  @endforeach
-                </select>
-              </div>
-            </div>
-
             <div class="form-group row">
               <label for="inputEmail3" class="col-sm-2 col-form-label"></label>
               <div class="col-sm-4">
-                <button class="btn btn-primary btn-block" type="submit">ADD</button>
+                <button class="btn btn-primary" type="submit">Update</button>
               </div>
+            </div>
+            <div class="col-md-4 mb-3">
+
             </div>
           </form>
 
@@ -138,6 +100,7 @@
       </div>
     </div>
   </div>
+
   <!-- Bootstrap core JavaScript-->
   <script src="{{ asset('admin/vendor/jquery/jquery.min.js') }}"></script>
   <script src="{{ asset('admin/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>

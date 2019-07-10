@@ -8,6 +8,11 @@ use DB;
 use App\Design;
 class DesignController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function show_design()
     {
         $design = Design::all();

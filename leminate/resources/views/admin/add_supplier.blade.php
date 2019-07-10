@@ -21,8 +21,8 @@
         <div class="container">
 
           <!-- Page Heading -->
-          <h1 class="h3 mb-2 text-gray-800">Add Product</h1>
-          <form method="post" action="{{route('add_product')}}">
+          <h1 class="h3 mb-2 text-gray-800">Add Supplier</h1>
+          <form method="post" action="{{route('add_supplier')}}">
             @csrf
             <input type="hidden" name="id">
             <div class="form-group row">
@@ -32,66 +32,25 @@
               </div>
             </div>
             <div class="form-group row">
-              <label for="inputEmail3" class="col-sm-2 col-form-label">Description</label>
+              <label for="inputEmail3" class="col-sm-2 col-form-label">Address</label>
               <div class="col-sm-4">
-                <input type="text" name="description" class="form-control" id="inputEmail3" required>
+                <input type="text" name="address" class="form-control" id="inputEmail3" required>
               </div>
             </div>
             <div class="form-group row">
-              <label for="inputEmail3" class="col-sm-2 col-form-label">QOH</label>
+              <label for="inputEmail3" class="col-sm-2 col-form-label">Mobile</label>
               <div class="col-sm-4">
-                <input type="number" name="qoh" class="form-control" id="inputEmail3" required>
+                <input type="tel" name="m_no" class="form-control" id="inputEmail3" required>
               </div>
             </div>
-            <div class="form-group row">
-              <label for="inputEmail3" class="col-sm-2 col-form-label">Price</label>
-              <div class="col-sm-4">
-                <input type="number" name="price" class="form-control" id="inputEmail3" required>
-              </div>
-            </div>
-
-            <div class="form-group row">
-              <label for="inputEmail3" class="col-sm-2 col-form-label">Category</label>
-              <div class="col-sm-4">
-                <select id="color" class="custom-select" name="category" required>
-                  <option value="" selected hidden>--- select category ---</option>
-                  @foreach ($category as $category)
-                  <option class="dropdown-item" value="{{$category->id}}">{{$category->name}}</option>
-                  @endforeach
-                </select>
-              </div>
-            </div>
-
-            <div class="form-group row">
-              <label for="inputEmail3" class="col-sm-2 col-form-label">Color</label>
-              <div class="col-sm-4">
-                <select id="color" class="custom-select" name="color" required>
-                  <option value="" selected hidden>--- select color ---</option>
-                  @foreach ($color as $color)
-                  <option class="dropdown-item" value="{{$color->id}}">{{$color->name}}</option>
-                  @endforeach
-                </select>
-              </div>
-            </div>
-            <div class="form-group row">
-              <label for="inputEmail3" class="col-sm-2 col-form-label">Design</label>
-              <div class="col-sm-4">
-                <select id="color" class="custom-select" name="design" required>
-                  <option value="" selected hidden>--- select design ---</option>
-                  @foreach ($design as $design)
-                  <option class="dropdown-item" value="{{$design->id}}">{{$design->name}}</option>
-                  @endforeach
-                </select>
-              </div>
-            </div>
-
             <div class="form-group row">
               <label for="inputEmail3" class="col-sm-2 col-form-label"></label>
               <div class="col-sm-4">
                 <button class="btn btn-primary btn-block" type="submit">ADD</button>
               </div>
             </div>
-          </form>
+
+          </form> 
 
         </div>
         <!-- /.container-fluid -->
