@@ -5,15 +5,16 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Model;
 
-class Product extends Model
+class Sales_Order extends Model
 {
     use Notifiable;
+    protected $table = 'sales_orders';
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'name', 'description', 'qoh', 'price', 'cat_id', 'color_id', 'design_id','supplier_id'
+        'id','address','date','status','user_id'
     ];
 }

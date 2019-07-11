@@ -21,7 +21,7 @@
         <div class="container">
 
           <!-- Page Heading -->
-          <h1 class="h3 mb-2 text-gray-800">Update User Details</h1>
+          <h1 class="h3 mb-2 text-gray-800">Update Customer Details</h1>
           <form method="post" action="{{route('update_user')}}">
             @csrf
             @method('put')

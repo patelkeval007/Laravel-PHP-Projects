@@ -22,7 +22,8 @@
 
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <h1 class="h3 mb-0 text-gray-800">Products</h1>
-            <a href="{{route('add_product_view_page')}}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">Add
+            <a href="{{route('add_product_view_page')}}"
+              class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">Add
               Product</a>
           </div>
 
@@ -62,16 +63,17 @@
                     </tr>
                   </tfoot>
                   <tbody>
-                    @foreach ($product as $index => $product)
+                    {{-- @foreach ($product as $index => $product) --}}
+                    @foreach ($product as $product)
                     <tr>
                       <td>{{ $loop->iteration }}</td>
                       <td>{{$product->name}}</td>
                       <td>{{$product->description}}</td>
                       <td>{{$product->qoh}}</td>
                       <td>{{$product->price}}</td>
-                      <td>{{$arr_category[$index]->name}}</td>
-                      <td>{{$arr_color[$index]->name}}</td>
-                      <td>{{$arr_design[$index]->name}}</td>
+                      <td>{{$product->cat_name}}</td>
+                      <td>{{$product->color_name}}</td>
+                      <td>{{$product->design_name}}</td>
                       <td>
 
                         <form style="display: inline" id="firstForm" method="post"

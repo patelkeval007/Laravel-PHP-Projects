@@ -84,6 +84,17 @@
                 </select>
               </div>
             </div>
+            <div class="form-group row">
+              <label for="inputEmail3" class="col-sm-2 col-form-label">Supplier</label>
+              <div class="col-sm-4">
+                <select id="color" class="custom-select" name="supplier" required>
+                  <option value="" selected hidden>--- select supplier ---</option>
+                  @foreach ($supplier as $supplier)
+                  <option class="dropdown-item" value="{{$supplier->id}}">{{$supplier->name}}</option>
+                  @endforeach
+                </select>
+              </div>
+            </div>
 
             <div class="form-group row">
               <label for="inputEmail3" class="col-sm-2 col-form-label"></label>

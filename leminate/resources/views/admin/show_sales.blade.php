@@ -20,9 +20,6 @@
         <!-- Begin Page Content -->
         <div class="container-fluid">
 
-          <!-- Page Heading -->
-          <h1 class="h3 mb-2 text-gray-800">Customers</h1>
-
           <!-- DataTales Example -->
           <div class="card shadow mb-4">
             <div class="card-header py-3">
@@ -30,53 +27,62 @@
             </div>
             <div class="card-body">
               <div class="table-responsive">
-                @if (count($user) > 0)
+                @if ($sales->count() > 0)
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                   <thead>
                     <tr>
                       <th>No</th>
-                      <th>Name</th>
-                      <th>Email</th>
+                      <th>Product</th>
                       <th>Address</th>
-                      <th>DOB</th>
-                      <th>Mobile</th>
+                      <th>Date</th>
+                      <th>Quantity</th>
+                      <th>Total</th>
+                      <th>Status</th>
+                      <th>Customer</th>
+                      <th>Supplier</th>
                       <th>Action</th>
                     </tr>
                   </thead>
                   <tfoot>
                     <tr>
                       <th>No</th>
-                      <th>Name</th>
-                      <th>Email</th>
+                      <th>Product</th>
                       <th>Address</th>
-                      <th>DOB</th>
-                      <th>Mobile</th>
+                      <th>Date</th>
+                      <th>Quantity</th>
+                      <th>Total</th>
+                      <th>Status</th>
+                      <th>Customer</th>
+                      <th>Supplier</th>
                       <th>Action</th>
                     </tr>
                   </tfoot>
                   <tbody>
-                    @foreach ($user as $user)
+                    {{-- @foreach ($sales as $index => $sales) --}}
+                    @foreach ($sales as $sales)
                     <tr>
                       <td>{{ $loop->iteration }}</td>
-                      <td>{{$user->name}}</td>
-                      <td>{{$user->email}}</td>
-                      <td>{{$user->address}}</td>
-                      <td>{{$user->dob}}</td>
-                      <td>{{$user->m_no}}</td>
+                      <td>{{$sales->p_name}}</td>
+                      <td>{{$sales->s_o_address}}</td>
+                      <td>{{$sales->s_o_date}}</td>
+                      <td>{{$sales->s_o_d_quantity}}</td>
+                      <td>{{$sales->s_o_d_total}}</td>
+                      <td>{{$sales->s_o_status}}</td>
+                      <td>{{$sales->u_name}}</td>
+                      <td>{{$sales->s_name}}</td>
                       <td>
-
                         <form style="display: inline" id="firstForm" method="post"
-                          action="{{route('update_user_page')}}">
+                          action="{{route('update_sales_page')}}">
                           @csrf
-                          <input type="hidden" name="id" value="{{$user->id}}">
+                          <input type="hidden" name="id" value="{{$sales->s_o_id}}">
                           <button class="btn btn-primary btn-circle btn-sm" type="submit">
                             <i class="fas fa-edit"></i>
                           </button>
                         </form>
-                        <form style="display: inline" method="post" action="{{route('del_user')}}">
+                        <form style="display: inline" method="post" action="{{route('del_sales')}}">
                           @csrf
                           @method('delete')
-                          <input type="hidden" name="id" value="{{$user->id}}">
+                          <input type="hidden" name="id" value="{{$sales->s_o_id}}">
                           <button class="btn btn-danger btn-circle btn-sm" type="submit">
                             <i class="fas fa-trash"></i>
                           </button>

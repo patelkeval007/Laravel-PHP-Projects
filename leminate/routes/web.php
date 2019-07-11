@@ -51,16 +51,10 @@ Route::post('/adminhome/update_product', 'Admin\ProductController@update_product
 Route::put('/adminhome/update_product', 'Admin\ProductController@update_product')->name('update_product')->middleware('authenticateAdmin');
 Route::delete('/adminhome/del_product', 'Admin\ProductController@del_product')->name('del_product')->middleware('authenticateAdmin');
 
-//purchase
-Route::get('/adminhome/show_purchase', 'Admin\PurchaseController@show_purchase')->name('show_purchase')->middleware('authenticateAdmin');
-Route::get('/adminhome/add_purchase_view_page', 'Admin\PurchaseController@add_purchase_view_page')->name('add_purchase_view_page')->middleware('authenticateAdmin');
-Route::post('/adminhome/add_purchase', 'Admin\PurchaseController@add_purchase')->name('add_purchase')->middleware('authenticateAdmin');
-Route::post('/adminhome/update_purchase', 'Admin\PurchaseController@update_purchase_view_page')->name('update_purchase_page')->middleware('authenticateAdmin');
-Route::put('/adminhome/update_purchase', 'Admin\PurchaseController@update_purchase')->name('update_purchase')->middleware('authenticateAdmin');
-Route::delete('/adminhome/del_purchase', 'Admin\PurchaseController@del_purchase')->name('del_purchase')->middleware('authenticateAdmin');
-
 //sales
 Route::get('/adminhome/show_sales', 'Admin\SalesController@show_sales')->name('show_sales')->middleware('authenticateAdmin');
+Route::post('/adminhome/update_sales', 'Admin\SalesController@update_sales_view_page')->name('update_sales_page')->middleware('authenticateAdmin');
+Route::put('/adminhome/update_sales', 'Admin\SalesController@update_sales')->name('update_sales')->middleware('authenticateAdmin');
 Route::delete('/adminhome/del_sales', 'Admin\SalesController@del_sales')->name('del_sales')->middleware('authenticateAdmin');
 
 //supplier

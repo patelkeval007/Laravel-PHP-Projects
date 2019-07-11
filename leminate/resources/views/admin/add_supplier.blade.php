@@ -40,7 +40,7 @@
             <div class="form-group row">
               <label for="inputEmail3" class="col-sm-2 col-form-label">Mobile</label>
               <div class="col-sm-4">
-                <input type="tel" name="m_no" class="form-control" id="inputEmail3" required>
+                <input type="tel" name="m_no" class="form-control" id="inputEmail3" pattern="[1-9]{1}[0-9]{9}" required>
               </div>
             </div>
             <div class="form-group row">

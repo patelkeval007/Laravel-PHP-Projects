@@ -14,7 +14,7 @@
 
 	<!-- Nav Item - Dashboard -->
 	<li class="nav-item active">
-		<a class="nav-link" href="index.html">
+		<a class="nav-link" href="{{ route('adminhome') }}">
 			<i class="fas fa-fw fa-tachometer-alt"></i>
 			<span>Dashboard</span></a>
 	</li>
@@ -30,7 +30,7 @@
 	<li class="nav-item">
 		<a class="nav-link" href="{{ route('show_user') }}">
 			<i class="fas fa-fw fa-table"></i>
-			<span>Users</span></a>
+			<span>Customers</span></a>
 	</li>
 
 	<li class="nav-item">
@@ -57,13 +57,7 @@
 	</li>
 
 	<li class="nav-item">
-		<a class="nav-link" href="tables.html">
-			<i class="fas fa-fw fa-table"></i>
-			<span>Purchases</span></a>
-	</li>
-
-	<li class="nav-item">
-		<a class="nav-link" href="tables.html">
+		<a class="nav-link" href="{{ route('show_sales') }}">
 			<i class="fas fa-fw fa-table"></i>
 			<span>Sales</span></a>
 	</li>
@@ -77,7 +71,7 @@
 	</div>
 
 	<li class="nav-item">
-		<a class="nav-link" href="tables.html">
+		<a class="nav-link" href="#">
 			<i class="fas fa-fw fa-folder"></i>
 			<span>Reports</span></a>
 	</li>

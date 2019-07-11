@@ -22,9 +22,11 @@ class CreateProductsTable extends Migration
             $table->integer('cat_id')->unsigned();
             $table->integer('color_id')->unsigned();
             $table->integer('design_id')->unsigned();
+            $table->integer('supplier_id')->unsigned();
             $table->foreign('cat_id')->references('id')->on('categories');
             $table->foreign('color_id')->references('id')->on('colors');
             $table->foreign('design_id')->references('id')->on('designs');
+            $table->foreign('supplier_id')->references('id')->on('suppliers');
         });
     }
 
