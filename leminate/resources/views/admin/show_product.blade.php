@@ -46,6 +46,7 @@
                       <th>Category</th>
                       <th>Color</th>
                       <th>Design</th>
+                      <th>Image</th>
                       <th>Action</th>
                     </tr>
                   </thead>
@@ -59,6 +60,7 @@
                       <th>Category</th>
                       <th>Color</th>
                       <th>Design</th>
+                      <th>Image</th>
                       <th>Action</th>
                     </tr>
                   </tfoot>
@@ -75,6 +77,9 @@
                       <td>{{$product->color_name}}</td>
                       <td>{{$product->design_name}}</td>
                       <td>
+                        <a href="{{ asset('admin/img/products/'.$product->image) }}" class="fas fa-eye" data-lightbox="image-1"></a>
+                      </td>
+                      <td>  
 
                         <form style="display: inline" id="firstForm" method="post"
                           action="{{route('update_product_page')}}">
@@ -165,6 +170,7 @@
 
   <!-- Page level custom scripts -->
   <script src="{{ asset('admin/js/demo/datatables-demo.js') }}"></script>
+  <script src="{{ asset('admin/js/lightbox-plus-jquery.min.js') }}"></script>
 
 
 </body>

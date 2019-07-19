@@ -10,6 +10,7 @@ use App\Color;
 use App\Design;
 use App\Categorie;
 use App\Supplier;
+use File;
 
 class ProductController extends Controller
 {
@@ -51,11 +52,21 @@ class ProductController extends Controller
 
     public function add_product(Request $request)
     {
+        // dd($request->myfile('myfile'));
+        $this->validate($request, [
+            // 'myfile' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:1024',
+            'myfile' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
+        $imageName = date('d_m_Y_H_i_s') . '.' . $request->myfile->getClientOriginalExtension();
+
+        $request->myfile->move(public_path() . '/admin/img/products', $imageName);
+
         $data = [
             'name' => $request->name,
             'description' => $request->description,
             'qoh' => $request->qoh,
             'price' => $request->price,
+            'image' => $imageName,
             'cat_id' => $request->category,
             'color_id' => $request->color,
             'design_id' => $request->design,
@@ -81,24 +92,64 @@ class ProductController extends Controller
 
     public function update_product(Request $request)
     {
-        if (DB::table('products')->where('id', '=', $request->id)->update([
-            'name' => $request->name,
-            'description' => $request->description,
-            'qoh' => $request->qoh,
-            'price' => $request->price,
-            'cat_id' => $request->cat_id,
-            'color_id' => $request->color_id,
-            'design_id' => $request->design_id,
-            'supplier_id' => $request->supplier_id,
-        ])) {
-            return redirect(route('show_product'));
+        // dd($request->myfile);
+        if ($request->myfile) {
+            $data =  DB::table('products')->select('image')->where('id',  $request->id)->first();
+            $image_path = public_path() . "/admin/img/products/" . $data->image;  // Value is not URL but directory file path
+            // dd(File::exists($image_path));
+            if (File::exists($image_path)) {
+                File::delete($image_path);
+            }
+
+            $this->validate($request, [
+                'myfile' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            ]);
+            $imageName = date('d_m_Y_H_i_s') . '.' . $request->myfile->getClientOriginalExtension();
+
+            $request->myfile->move(public_path() . '/admin/img/products', $imageName);
+
+            if (DB::table('products')->where('id', '=', $request->id)->update([
+                'name' => $request->name,
+                'description' => $request->description,
+                'qoh' => $request->qoh,
+                'price' => $request->price,
+                'image' => $imageName,
+                'cat_id' => $request->cat_id,
+                'color_id' => $request->color_id,
+                'design_id' => $request->design_id,
+                'supplier_id' => $request->supplier_id,
+            ])) {
+                return redirect(route('show_product'));
+            } else {
+                return redirect(route('show_product'));
+            }
         } else {
-            return redirect(route('show_product'));
+            if (DB::table('products')->where('id', '=', $request->id)->update([
+                'name' => $request->name,
+                'description' => $request->description,
+                'qoh' => $request->qoh,
+                'price' => $request->price,
+                'cat_id' => $request->cat_id,
+                'color_id' => $request->color_id,
+                'design_id' => $request->design_id,
+                'supplier_id' => $request->supplier_id,
+            ])) {
+                return redirect(route('show_product'));
+            } else {
+                return redirect(route('show_product'));
+            }
         }
     }
 
     public function del_product(Request $request)
     {
+        $data =  DB::table('products')->select('image')->where('id',  $request->id)->first();
+        $image_path = public_path() . "/admin/img/products/" . $data->image;  // Value is not URL but directory file path
+        // dd(File::exists($image_path));
+        if (File::exists($image_path)) {
+            File::delete($image_path);
+        }
+
         DB::table('products')->where('id', '=', $request->id)->delete();
         return redirect(route('show_product'));
     }

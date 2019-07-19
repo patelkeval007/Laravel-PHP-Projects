@@ -19,6 +19,7 @@ class CreateProductsTable extends Migration
             $table->string('description');
             $table->integer('qoh');
             $table->double('price');
+            $table->string('image');
             $table->integer('cat_id')->unsigned();
             $table->integer('color_id')->unsigned();
             $table->integer('design_id')->unsigned();
