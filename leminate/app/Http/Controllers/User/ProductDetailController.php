@@ -20,9 +20,10 @@ class ProductDetailController extends Controller
     public function product_detail(Request $request)
     {
         $product = DB::table('products')->where('id', '=', $request->id)->first();
-        return view('/user/product_detail', compact('product'));
+        $stock = DB::table('stocks')->where('product_id', '=', $request->id)->first();
+        return view('/user/product_detail', compact('product', 'stock'));
     }
-    
+
     public function product_add_to_cart(Request $request)
     {
         // dd(Auth::user()->id);
@@ -98,6 +99,7 @@ class ProductDetailController extends Controller
             DB::table('cart_details')->insert($data);
         }
         $product = DB::table('products')->where('id', '=', $request->id)->first();
-        return view('/user/product_detail', compact('product'));
+        $stock = DB::table('stocks')->where('product_id', '=', $id)->first();
+        return view('/user/product_detail', compact('product','stock'));
     }
 }

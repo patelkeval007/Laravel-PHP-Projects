@@ -72,7 +72,18 @@ class ProductController extends Controller
             'design_id' => $request->design,
             'supplier_id' => $request->supplier,
         ];
-        DB::table('products')->insert($data);
+        if (DB::table('products')->insert($data)) {
+            $pid = DB::table('products')->latest('id')->first()->id;
+            $data = [
+                'product_id' => $pid,
+                'purchase' => $request->qoh,
+                'sales' => 0,
+                'available' => $request->qoh
+            ];
+            DB::table('stocks')->insert($data);
+        } else {
+            dd('error while add product');
+        }
         return redirect(route('show_product'));
     }
 
@@ -93,6 +104,8 @@ class ProductController extends Controller
     public function update_product(Request $request)
     {
         // dd($request->myfile);
+        $t_product = DB::table('products')->where('id', '=',  $request->id)->first();
+        $t_qoh = $t_product->qoh + $request->qoh;
         if ($request->myfile) {
             $data =  DB::table('products')->select('image')->where('id',  $request->id)->first();
             $image_path = public_path() . "/admin/img/products/" . $data->image;  // Value is not URL but directory file path
@@ -111,7 +124,7 @@ class ProductController extends Controller
             if (DB::table('products')->where('id', '=', $request->id)->update([
                 'name' => $request->name,
                 'description' => $request->description,
-                'qoh' => $request->qoh,
+                'qoh' => $t_qoh,
                 'price' => $request->price,
                 'image' => $imageName,
                 'cat_id' => $request->cat_id,
@@ -119,7 +132,13 @@ class ProductController extends Controller
                 'design_id' => $request->design_id,
                 'supplier_id' => $request->supplier_id,
             ])) {
-                return redirect(route('show_product'));
+                if (DB::table('stocks')->where('product_id', '=', $request->id)->update([
+                    'purchase' => $request->qoh,
+                ])) {
+                    return redirect(route('show_product'));
+                } else {
+                    dd('Stock not update');
+                }
             } else {
                 return redirect(route('show_product'));
             }
@@ -127,14 +146,24 @@ class ProductController extends Controller
             if (DB::table('products')->where('id', '=', $request->id)->update([
                 'name' => $request->name,
                 'description' => $request->description,
-                'qoh' => $request->qoh,
+                'qoh' => $t_qoh,
                 'price' => $request->price,
                 'cat_id' => $request->cat_id,
                 'color_id' => $request->color_id,
                 'design_id' => $request->design_id,
                 'supplier_id' => $request->supplier_id,
             ])) {
-                return redirect(route('show_product'));
+                $t_stock = DB::table('stocks')->where('product_id', '=',  $request->id)->first();
+                $t_available = $t_stock->available + $request->qoh;
+                $t_purchase = $t_stock->purchase + $request->qoh;
+                if (DB::table('stocks')->where('product_id', '=', $request->id)->update([
+                    'purchase' => $t_purchase,
+                    'available' => $t_available,
+                ])) {
+                    return redirect(route('show_product'));
+                } else {
+                    dd('Stock not update');
+                }
             } else {
                 return redirect(route('show_product'));
             }

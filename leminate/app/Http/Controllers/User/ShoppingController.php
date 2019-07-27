@@ -63,7 +63,19 @@ class ShoppingController extends Controller
                 'product_id' => $item->product_id,
                 'sales_order_id' => $sales_id,
             ];
-            DB::table('sales_order_details')->insert($data);
+            if (DB::table('sales_order_details')->insert($data)) {
+                $t_stock = DB::table('stocks')->where('product_id', '=', $item->product_id)->first();
+                $t_available = $t_stock->available - $item->quantity;
+                $t_sales = $t_stock->sales + $item->quantity;
+                if (DB::table('stocks')->where('product_id', '=', $item->product_id)->update([
+                    'sales' => $t_sales,
+                    'available' => $t_available,
+                ])) { } else {
+                    dd('Stock not update');
+                }
+            } else {
+                dd('error sales order details not inserted');
+            }
         }
 
         if (DB::table('carts')->where('user_id', '=', Auth::user()->id)->delete()) {
