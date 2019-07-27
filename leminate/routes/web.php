@@ -65,8 +65,18 @@ Route::post('/adminhome/update_supplier', 'Admin\SupplierController@update_suppl
 Route::put('/adminhome/update_supplier', 'Admin\SupplierController@update_supplier')->name('update_supplier')->middleware('authenticateAdmin');
 Route::delete('/adminhome/del_supplier', 'Admin\SupplierController@del_supplier')->name('del_supplier')->middleware('authenticateAdmin');
 
+
+// index
 Route::get('/userhome', 'User\UserController@index')->name('userhome')->middleware('authenticateUser');
 
-Route::get('/userhome/contact', 'User\ContactController@index')->name('contact')->middleware('authenticateUser');;
+// ProductDetails
+Route::post('/userhome/product_detail', 'User\ProductDetailController@product_detail')->name('product_detail')->middleware('authenticateUser');
+Route::post('/userhome/product_add_to_cart', 'User\ProductDetailController@product_add_to_cart')->name('product_add_to_cart')->middleware('authenticateUser');
 
+// Shopping Cart
+Route::get('/userhome/shoping_cart', 'User\ShoppingController@shoping_cart')->name('shoping_cart')->middleware('authenticateUser');
+Route::post('/userhome/checkout', 'User\ShoppingController@checkout')->name('checkout')->middleware('authenticateUser');
+Route::post('/userhome/product_remove_from_cart', 'User\ShoppingController@product_remove_from_cart')->name('product_remove_from_cart')->middleware('authenticateUser');
+
+Route::get('/userhome/contact', 'User\ContactController@index')->name('contact')->middleware('authenticateUser');;
 Route::get('/userhome/about', 'User\AboutController@index')->name('about')->middleware('authenticateUser');;

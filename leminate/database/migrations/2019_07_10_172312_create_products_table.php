@@ -24,10 +24,10 @@ class CreateProductsTable extends Migration
             $table->integer('color_id')->unsigned();
             $table->integer('design_id')->unsigned();
             $table->integer('supplier_id')->unsigned();
-            $table->foreign('cat_id')->references('id')->on('categories');
-            $table->foreign('color_id')->references('id')->on('colors');
-            $table->foreign('design_id')->references('id')->on('designs');
-            $table->foreign('supplier_id')->references('id')->on('suppliers');
+            $table->foreign('cat_id')->references('id')->on('categories')->onDelete('cascade');
+            $table->foreign('color_id')->references('id')->on('colors')->onDelete('cascade');
+            $table->foreign('design_id')->references('id')->on('designs')->onDelete('cascade');
+            $table->foreign('supplier_id')->references('id')->on('suppliers')->onDelete('cascade');
         });
     }
 
