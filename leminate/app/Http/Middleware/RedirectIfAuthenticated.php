@@ -31,6 +31,20 @@ class RedirectIfAuthenticated
                     break;
             }
         }
+        // if (Auth::guard($guard)->check()) {
+        //     // Check user role
+        //     switch (Auth::user()->is_admin) {
+        //         case 0:
+        //             return redirect('userhome');
+        //             break;
+        //         case 1:
+        //             return redirect('adminhome');
+        //             break;
+        //         default:
+        //             return redirect('login');
+        //             break;
+        //     }
+        // }
 
         return $next($request);
     }
