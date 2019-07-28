@@ -77,7 +77,7 @@
 	</div>
 
 	<li class="nav-item">
-		<a class="nav-link" href="#">
+		<a class="nav-link" href="{{ route('show_report') }}">
 			<i class="fas fa-fw fa-folder"></i>
 			<span>Reports</span></a>
 	</li>

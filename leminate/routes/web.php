@@ -61,6 +61,10 @@ Route::delete('/adminhome/del_supplier', 'Admin\SupplierController@del_supplier'
 // stock
 Route::get('/adminhome/show_stock', 'Admin\StockController@show_stock')->name('show_stock')->middleware('authenticateAdmin');
 Route::get('/adminhome/show_out_stock', 'Admin\StockController@show_out_stock')->name('show_out_stock')->middleware('authenticateAdmin');
+// Report
+Route::get('/adminhome/show_report', 'Admin\ReportController@show_report')->name('show_report')->middleware('authenticateAdmin');
+Route::get('/adminhome/users_pdf', 'Admin\ReportController@users_pdf')->name('users_pdf')->middleware('authenticateAdmin');
+Route::get('/adminhome/users_excel', 'Admin\ReportController@users_excel')->name('users_excel')->middleware('authenticateAdmin');
 
 
 // ================================User================================
@@ -73,6 +77,11 @@ Route::post('/userhome/product_add_to_cart', 'User\ProductDetailController@produ
 Route::get('/userhome/shoping_cart', 'User\ShoppingController@shoping_cart')->name('shoping_cart')->middleware('authenticateUser');
 Route::post('/userhome/checkout', 'User\ShoppingController@checkout')->name('checkout')->middleware('authenticateUser');
 Route::post('/userhome/product_remove_from_cart', 'User\ShoppingController@product_remove_from_cart')->name('product_remove_from_cart')->middleware('authenticateUser');
+// profile
+Route::get('/userhome/my_account/show_myaccount', 'User\MyAccountController@show_myaccount')->name('show_myaccount')->middleware('authenticateUser');
+Route::post('/userhome/my_account/edit_profile', 'User\MyAccountController@edit_profile')->name('edit_profile')->middleware('authenticateUser');
+Route::get('/userhome/my_account/show_change_pass', 'User\MyAccountController@show_change_pass')->name('show_change_pass')->middleware('authenticateUser');
+Route::post('/userhome/my_account/edit_password', 'User\MyAccountController@edit_password')->name('edit_password')->middleware('authenticateUser');
 // contact
 Route::get('/userhome/contact', 'User\ContactController@index')->name('contact')->middleware('authenticateUser');;
 // about
