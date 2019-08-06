@@ -29,4 +29,26 @@ class ColorController extends Controller
         DB::table('colors')->where('id', '=', $request->id)->delete();
         return redirect(route('show_color'));
     }
+    public function add_color_csv(Request $request)
+    {
+
+
+        
+        // if ($request->hasFile('myfile')) {
+        //     $path = $request->file('myfile')->getRealPath();
+        //     $data = Excel::load($path)->get();
+        //     dd($data);
+        //     if ($data->count()) {
+        //         foreach ($data as $key => $value) {
+        //             $arr[] = ['name' => $value->name, 'details' => $value->details];
+        //         }
+        //         if (!empty($arr)) {
+        //             \DB::table('products')->insert($arr);
+        //             dd('Insert Record successfully.');
+        //         }
+        //     }
+        // }
+        
+        return redirect(route('show_product'));
+    }
 }

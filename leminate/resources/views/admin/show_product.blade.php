@@ -77,9 +77,10 @@
                       <td>{{$product->color_name}}</td>
                       <td>{{$product->design_name}}</td>
                       <td>
-                        <a href="{{ asset('admin/img/products/'.$product->image) }}" class="fas fa-eye" data-lightbox="image-1"></a>
+                        <a href="{{ asset('admin/img/products/'.$product->image) }}" class="fas fa-eye"
+                          data-lightbox="image-1"></a>
                       </td>
-                      <td>  
+                      <td>
 
                         <form style="display: inline" id="firstForm" method="post"
                           action="{{route('update_product_page')}}">

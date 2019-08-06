@@ -11,7 +11,7 @@ use App\Design;
 use App\Categorie;
 use App\Supplier;
 use File;
-
+use Excel;
 class ProductController extends Controller
 {
     public function __construct()

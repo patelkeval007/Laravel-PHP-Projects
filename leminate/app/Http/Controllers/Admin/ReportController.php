@@ -33,6 +33,5 @@ class ReportController extends Controller
     {
         $users = User::all();
         return (new FastExcel($users))->download('leminates_customers.xlsx');
-
     }
 }

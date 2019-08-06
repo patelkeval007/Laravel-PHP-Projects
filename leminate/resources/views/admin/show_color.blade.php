@@ -24,7 +24,24 @@
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <h1 class="h3 mb-0 text-gray-800">Product Color</h1>
           </div>
-
+          <form method="post" action="{{route('add_color_csv')}}" enctype="multipart/form-data">
+            @csrf
+            <div class="d-sm-flex align-items-center justify-content-between mb-4">
+              <h1 class="h3 mb-0 text-gray-800"></h1>
+              <div class="form-group row">
+                <div class="col-sm-12">
+                  <div class="input-group mb-3">
+                    <div class="custom-file">
+                      @csrf
+                      <input type="file" class="custom-file-input" name="myfile" id="customFile" required>
+                      <label class="custom-file-label" for="customFile">Upload data through .CSV</label>
+                    </div>
+                    <button type="submit" class="btn btn-success">Upload</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
           <!-- Earnings (Monthly) Card Example -->
           <div class="col-xl-10 col-md-6 mb-4">
             <form method="post" action="{{route('add_color')}}">

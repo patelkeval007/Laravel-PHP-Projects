@@ -35,6 +35,7 @@ Route::delete('/adminhome/del_category', 'Admin\CategoryController@del_category'
 Route::get('/adminhome/show_color', 'Admin\ColorController@show_color')->name('show_color')->middleware('authenticateAdmin');
 Route::post('/adminhome/add_color', 'Admin\ColorController@add_color')->name('add_color')->middleware('authenticateAdmin');
 Route::delete('/adminhome/del_color', 'Admin\ColorController@del_color')->name('del_color')->middleware('authenticateAdmin');
+Route::post('/adminhome/add_color_csv', 'Admin\ColorController@add_color_csv')->name('add_color_csv')->middleware('authenticateAdmin');
 //design
 Route::get('/adminhome/show_design', 'Admin\DesignController@show_design')->name('show_design')->middleware('authenticateAdmin');
 Route::post('/adminhome/add_design', 'Admin\DesignController@add_design')->name('add_design')->middleware('authenticateAdmin');
@@ -70,6 +71,8 @@ Route::get('/adminhome/users_excel', 'Admin\ReportController@users_excel')->name
 // ================================User================================
 // index
 Route::get('/userhome', 'User\UserController@index')->name('userhome')->middleware('authenticateUser');
+// Product
+Route::post('/userhome/product', 'User\ProductController@product')->name('product')->middleware('authenticateUser');
 // ProductDetails
 Route::post('/userhome/product_detail', 'User\ProductDetailController@product_detail')->name('product_detail')->middleware('authenticateUser');
 Route::post('/userhome/product_add_to_cart', 'User\ProductDetailController@product_add_to_cart')->name('product_add_to_cart')->middleware('authenticateUser');

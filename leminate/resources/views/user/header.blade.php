@@ -51,11 +51,10 @@
 						</li>
 
 						<li>
-							<a href="product.html">Shop</a>
-						</li>
-
-						<li class="label1" data-label1="hot">
-							<a href="shoping-cart.html">Features</a>
+							<form method="post" action="{{route('product')}}">
+								@csrf
+								<button type="submit">Shop</button>
+							</form>
 						</li>
 
 						<li>
@@ -73,7 +72,7 @@
 
 					<div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-cart"
 						data-notify="2">
-						<a class="zmdi zmdi-shopping-cart" href="{{route('shoping_cart')}}" ></a>
+						<a class="zmdi zmdi-shopping-cart" href="{{route('shoping_cart')}}"></a>
 					</div>
 
 				</div>
