@@ -21,8 +21,13 @@
         <div class="container-fluid">
 
           <!-- Page Heading -->
-          <h1 class="h3 mb-2 text-gray-800">Customers</h1>
-
+          <div class="d-sm-flex align-items-center justify-content-between mb-4">
+            <h1 class="h3 mb-0 text-gray-800">Customers</h1>
+            {{-- <a class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" href="{{route('users_pdf')}}"><i
+                class="fas fa-download fa-sm text-white-50"></i> pdf</a>
+            <a class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" href="{{route('users_excel')}}"><i
+                class="fas fa-download fa-sm text-white-50"></i> excel</a> --}}
+          </div>
           <!-- DataTales Example -->
           <div class="card shadow mb-4">
             <div class="card-header py-3">

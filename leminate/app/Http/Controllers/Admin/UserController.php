@@ -50,4 +50,18 @@ class UserController extends Controller
         DB::table('users')->where('id', '=', $request->id)->delete();
         return redirect(route('show_user'));
     }
+    public function users_pdf()
+    {
+        $users = User::all();
+        $name = Auth::user()->name;
+        $today = date('d-m-Y');
+        $pdf = PDF::loadView('admin/users_pdf', compact('users', 'name', 'today'));
+        return $pdf->download('leminates_customers.pdf');
+    }
+
+    public function users_excel()
+    {
+        $users = User::all();
+        return (new FastExcel($users))->download('leminates_customers.xlsx');
+    }
 }
