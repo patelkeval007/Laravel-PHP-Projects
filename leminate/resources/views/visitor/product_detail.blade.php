@@ -1,69 +1,108 @@
-@extends('user.base')
+@extends('visitor.base')
 
 @section('base')
 
 <body class="animsition">
 
-	@include('user.header')
+	@include('visitor.header')
 
-	<!-- Product -->
-	<div class="bg0 m-t-23 p-b-140">
-		<div class="container">
-			@if ($categories->count() > 0)
-			<div class="flex-w flex-sb-m p-b-52">
-				<div class="flex-w flex-l-m filter-tope-group m-tb-10">
-					@foreach ($categories as $category)
-					<form style="display: inline" method="post" action="{{route('v_product')}}">
-						@csrf
-						<input type="hidden" name="cat_id" value="{{$category->id}}">
-						<button type="submit" class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 how-active1"
-							data-filter="*">
-							{{$category->name}}
-						</button>
-					</form>
-					@endforeach
-				</div>
-			</div>
-			@endif
+	<!-- breadcrumb -->
+	<div class="container">
+		<div class="bread-crumb flex-w p-l-25 p-r-15 p-t-30 p-lr-0-lg">
+			<a href="index.html" class="stext-109 cl8 hov-cl1 trans-04">
+				Home
+				<i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
+			</a>
 
-			<div class="row isotope-grid">
-				@foreach ($products as $product)
-				<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item women">
+			<a href="product.html" class="stext-109 cl8 hov-cl1 trans-04">
+				Men
+				<i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
+			</a>
 
-					<div class="block2">
-						<div class="block2-pic hov-img0">
-							<img src="{{ asset('admin/img/products/'.$product->image) }}" alt="IMG-PRODUCT">
-							<form style="display: inline" id="firstForm" method="post"
-								action="{{route('product_detail') }}">
-								@csrf
-								<input type="hidden" name="id" value="{{$product->id}}">
-								<button type="submit"
-									class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04">
-									Quick View
-								</button>
-							</form>
-						</div>
-
-						<div class="block2-txt flex-w flex-t p-t-14">
-							<div class="block2-txt-child1 flex-col-l ">
-								<a class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-									{{$product->name}}
-								</a>
-
-								<span class="stext-105 cl3">
-									₹ {{$product->price}}
-								</span>
-							</div>
-
-						</div>
-					</div>
-				</div>
-				@endforeach
-			</div>
+			<span class="stext-109 cl4">
+				Lightweight Jacket
+			</span>
 		</div>
 	</div>
 
-	@include('user.footer')
+	<!-- Product Detail -->
+	<section class="sec-product-detail bg0 p-t-65 p-b-60">
+		<form style="display: inline" method="post" action="{{route('v_product_add_to_cart')}}">
+			@csrf
+			<input type="hidden" name="id" value="{{$product->id}}">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-6 col-lg-7 p-b-30">
+						<div class="p-l-25 p-r-30 p-lr-0-lg">
+							<div class="wrap-slick3 flex-sb flex-w">
+
+								<div class="wrap-pic-w pos-relative">
+									<img src="{{ asset('admin/img/products/'.$product->image) }}" alt="IMG-PRODUCT">
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6 col-lg-5 p-b-30">
+						<div class="p-r-50 p-t-5 p-lr-0-lg">
+							<h4 class="mtext-105 cl2 js-name-detail p-b-14">
+								{{$product->name}}
+							</h4>
+
+							<span class="mtext-106 cl2">
+								₹ {{$product->price}}
+							</span>
+
+							<p class="stext-102 cl3 p-t-23">
+								Description : {{$product->description}}
+							</p>
+							<p class="stext-102 cl3 p-t-23">
+								Quantity Available : {{$stock->available}}
+							</p>
+							<p class="stext-102 cl3 p-t-23">
+								Category : {{$category->name}}
+							</p>
+							<p class="stext-102 cl3 p-t-23">
+								Color : {{$color->name}}
+							</p>
+							<p class="stext-102 cl3 p-t-23">
+								Design : {{$design->name}}
+							</p>
+							<p class="stext-102 cl3 p-t-23">
+								Supplier : {{$supplier->name}}
+							</p>
+
+							<!--  -->
+							<div class="p-t-33">
+								<div class="flex-w flex-r-m p-b-10">
+									<div class="size-204 flex-w flex-m respon6-next">
+										<div class="wrap-num-product flex-w m-r-20 m-tb-10">
+											<div class="btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m">
+												<i class="fs-16 zmdi zmdi-minus"></i>
+											</div>
+
+											<input class="mtext-104 cl3 txt-center num-product" type="number"
+												name="quantity" value="1" max="{{$stock->available}}">
+
+											<div class="btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m">
+												<i class="fs-16 zmdi zmdi-plus"></i>
+											</div>
+										</div>
+
+										<button
+											class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04">
+											Add to cart
+										</button>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</form>
+	</section>
+
+	@include('visitor.footer')
 
 	<!-- Back to top -->
 	<div class="btn-back-to-top" id="myBtn">

@@ -31,7 +31,7 @@
               @csrf
               <div class="form-row">
                 <div class="form-group col-md-6">
-                  <input type="text" name="name" class="form-control" placeholder="design Name" required>
+                  <input type="text" name="name" class="form-control" placeholder="Design Name" required>
                 </div>
                 <div class="form-group col-md-3">
                   <button type="submit" class="form-control btn btn-outline-primary">Add</button>

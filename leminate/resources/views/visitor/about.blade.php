@@ -1,10 +1,10 @@
-@extends('user.base')
+@extends('visitor.base')
 
 @section('base')
 
 <body class="animsition">
 
-	@include('user.header')
+	@include('visitor.header')
 
 	<!-- Title page -->
 	<section class="bg-img1 txt-center p-lr-15 p-tb-92">
@@ -57,7 +57,7 @@
 		</div>
 	</div>
 
-	@include('user.footer')
+	@include('visitor.footer')
 
 	<!-- Back to top -->
 	<div class="btn-back-to-top" id="myBtn">

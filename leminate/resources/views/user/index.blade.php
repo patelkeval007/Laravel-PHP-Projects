@@ -10,7 +10,7 @@
 	<section class="section-slide">
 		<div class="wrap-slick1">
 			<div class="slick1">
-				<div class="item-slick1" style="background-image: url({{ URL::asset('user/images/slide-01.jpg') }});">
+				<div class="item-slick1" style="background-image: url({{ URL::asset('user/images/s5.jpg') }});">
 					<div class="container h-full">
 						<div class="flex-col-l-m h-full p-t-100 p-b-30 respon5">
 							<div class="layer-slick1 animated visible-false" data-appear="fadeInDown" data-delay="0">
@@ -26,16 +26,16 @@
 							</div>
 
 							<div class="layer-slick1 animated visible-false" data-appear="zoomIn" data-delay="1600">
-								<a href="product.html"
-									class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04">
-									Shop Now
-								</a>
+								<form method="post" action="{{route('product')}}">
+									@csrf
+									<button type="submit" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04">Shop</button>
+								</form>
 							</div>
 						</div>
 					</div>
 				</div>
 
-				<div class="item-slick1" style="background-image: url({{ URL::asset('user/images/slide-02.jpg') }});">
+				<div class="item-slick1" style="background-image: url({{ URL::asset('user/images/s4.jpg') }});">
 					<div class="container h-full">
 						<div class="flex-col-l-m h-full p-t-100 p-b-30 respon5">
 							<div class="layer-slick1 animated visible-false" data-appear="rollIn" data-delay="0">
@@ -44,45 +44,46 @@
 								</span>
 							</div>
 
-							<div class="layer-slick1 animated visible-false" data-appear="lightSpeedIn"
-								data-delay="800">
+							<div class="layer-slick1 animated visible-false" data-appear="lightSpeedIn" data-delay="800">
 								<h2 class="ltext-201 cl2 p-t-19 p-b-43 respon1">
 									Jackets & Coats
 								</h2>
 							</div>
 
 							<div class="layer-slick1 animated visible-false" data-appear="slideInUp" data-delay="1600">
-								<a href="product.html"
-									class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04">
-									Shop Now
-								</a>
+								<!-- <a href="product.html" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04"> -->
+								<form method="post" action="{{route('product')}}">
+									@csrf
+									<button type="submit" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04">Shop</button>
+								</form>
+								<!-- </a> -->
 							</div>
 						</div>
 					</div>
 				</div>
 
-				<div class="item-slick1" style="background-image: url({{ URL::asset('user/images/slide-03.jpg') }});">
+				<div class="item-slick1" style="background-image: url({{ URL::asset('user/images/s3.jpg') }});">
 					<div class="container h-full">
 						<div class="flex-col-l-m h-full p-t-100 p-b-30 respon5">
-							<div class="layer-slick1 animated visible-false" data-appear="rotateInDownLeft"
-								data-delay="0">
+							<div class="layer-slick1 animated visible-false" data-appear="rotateInDownLeft" data-delay="0">
 								<span class="ltext-101 cl2 respon2">
 									Men Collection 2018
 								</span>
 							</div>
 
-							<div class="layer-slick1 animated visible-false" data-appear="rotateInUpRight"
-								data-delay="800">
+							<div class="layer-slick1 animated visible-false" data-appear="rotateInUpRight" data-delay="800">
 								<h2 class="ltext-201 cl2 p-t-19 p-b-43 respon1">
 									New arrivals
 								</h2>
 							</div>
 
 							<div class="layer-slick1 animated visible-false" data-appear="rotateIn" data-delay="1600">
-								<a href="product.html"
-									class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04">
-									Shop Now
-								</a>
+								<!-- <a href="product.html" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04"> -->
+								<form method="post" action="{{route('product')}}">
+									@csrf
+									<button type="submit" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04">Shop</button>
+								</form>
+								<!-- </a> -->
 							</div>
 						</div>
 					</div>
@@ -112,12 +113,10 @@
 					<div class="block2">
 						<div class="block2-pic hov-img0">
 							<img src="{{ asset('admin/img/products/'.$product->image) }}" alt="IMG-PRODUCT">
-							<form style="display: inline" id="firstForm" method="post"
-								action="{{route('product_detail')}}">
+							<form style="display: inline" id="firstForm" method="post" action="{{route('product_detail')}}">
 								@csrf
 								<input type="hidden" name="id" value="{{$product->id}}">
-								<button type="submit"
-									class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04">
+								<button type="submit" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04">
 									Quick View
 								</button>
 							</form>
@@ -174,8 +173,7 @@
 										<div class="wrap-pic-w pos-relative">
 											<img src="images/product-detail-01.jpg" alt="IMG-PRODUCT">
 
-											<a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04"
-												href="images/product-detail-01.jpg">
+											<a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="images/product-detail-01.jpg">
 												<i class="fa fa-expand"></i>
 											</a>
 										</div>
@@ -185,8 +183,7 @@
 										<div class="wrap-pic-w pos-relative">
 											<img src="images/product-detail-02.jpg" alt="IMG-PRODUCT">
 
-											<a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04"
-												href="images/product-detail-02.jpg">
+											<a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="images/product-detail-02.jpg">
 												<i class="fa fa-expand"></i>
 											</a>
 										</div>
@@ -196,8 +193,7 @@
 										<div class="wrap-pic-w pos-relative">
 											<img src="images/product-detail-03.jpg" alt="IMG-PRODUCT">
 
-											<a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04"
-												href="images/product-detail-03.jpg">
+											<a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="images/product-detail-03.jpg">
 												<i class="fa fa-expand"></i>
 											</a>
 										</div>
@@ -269,16 +265,14 @@
 												<i class="fs-16 zmdi zmdi-minus"></i>
 											</div>
 
-											<input class="mtext-104 cl3 txt-center num-product" type="number"
-												name="num-product" value="1">
+											<input class="mtext-104 cl3 txt-center num-product" type="number" name="num-product" value="1">
 
 											<div class="btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m">
 												<i class="fs-16 zmdi zmdi-plus"></i>
 											</div>
 										</div>
 
-										<button
-											class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail">
+										<button class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail">
 											Add to cart
 										</button>
 									</div>
@@ -288,25 +282,20 @@
 							<!--  -->
 							<div class="flex-w flex-m p-l-100 p-t-40 respon7">
 								<div class="flex-m bor9 p-r-10 m-r-11">
-									<a href="#"
-										class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 js-addwish-detail tooltip100"
-										data-tooltip="Add to Wishlist">
+									<a href="#" class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 js-addwish-detail tooltip100" data-tooltip="Add to Wishlist">
 										<i class="zmdi zmdi-favorite"></i>
 									</a>
 								</div>
 
-								<a href="#" class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 m-r-8 tooltip100"
-									data-tooltip="Facebook">
+								<a href="#" class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 m-r-8 tooltip100" data-tooltip="Facebook">
 									<i class="fa fa-facebook"></i>
 								</a>
 
-								<a href="#" class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 m-r-8 tooltip100"
-									data-tooltip="Twitter">
+								<a href="#" class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 m-r-8 tooltip100" data-tooltip="Twitter">
 									<i class="fa fa-twitter"></i>
 								</a>
 
-								<a href="#" class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 m-r-8 tooltip100"
-									data-tooltip="Google Plus">
+								<a href="#" class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 m-r-8 tooltip100" data-tooltip="Google Plus">
 									<i class="fa fa-google-plus"></i>
 								</a>
 							</div>
@@ -327,7 +316,7 @@
 	<!--===============================================================================================-->
 	<script src="{{ asset('user/vendor/select2/select2.min.js') }}"></script>
 	<script>
-		$(".js-select2").each(function(){
+		$(".js-select2").each(function() {
 			$(this).select2({
 				minimumResultsForSearch: 20,
 				dropdownParent: $(this).next('.dropDownSelect2')
@@ -350,13 +339,13 @@
 	<script>
 		$('.gallery-lb').each(function() { // the containers for all your galleries
 			$(this).magnificPopup({
-		        delegate: 'a', // the selector for gallery item
-		        type: 'image',
-		        gallery: {
-		        	enabled:true
-		        },
-		        mainClass: 'mfp-fade'
-		    });
+				delegate: 'a', // the selector for gallery item
+				type: 'image',
+				gallery: {
+					enabled: true
+				},
+				mainClass: 'mfp-fade'
+			});
 		});
 	</script>
 	<!--===============================================================================================-->
@@ -364,13 +353,13 @@
 	<!--===============================================================================================-->
 	<script src="{{ asset('user/vendor/sweetalert/sweetalert.min.js') }}"></script>
 	<script>
-		$('.js-addwish-b2').on('click', function(e){
+		$('.js-addwish-b2').on('click', function(e) {
 			e.preventDefault();
 		});
 
-		$('.js-addwish-b2').each(function(){
+		$('.js-addwish-b2').each(function() {
 			var nameProduct = $(this).parent().parent().find('.js-name-b2').html();
-			$(this).on('click', function(){
+			$(this).on('click', function() {
 				swal(nameProduct, "is added to wishlist !", "success");
 
 				$(this).addClass('js-addedwish-b2');
@@ -378,10 +367,10 @@
 			});
 		});
 
-		$('.js-addwish-detail').each(function(){
+		$('.js-addwish-detail').each(function() {
 			var nameProduct = $(this).parent().parent().parent().find('.js-name-detail').html();
 
-			$(this).on('click', function(){
+			$(this).on('click', function() {
 				swal(nameProduct, "is added to wishlist !", "success");
 
 				$(this).addClass('js-addedwish-detail');
@@ -391,27 +380,26 @@
 
 		/*---------------------------------------------*/
 
-		$('.js-addcart-detail').each(function(){
+		$('.js-addcart-detail').each(function() {
 			var nameProduct = $(this).parent().parent().parent().parent().find('.js-name-detail').html();
-			$(this).on('click', function(){
+			$(this).on('click', function() {
 				swal(nameProduct, "is added to cart !", "success");
 			});
 		});
-	
 	</script>
 	<!--===============================================================================================-->
 	<script src="{{ asset('user/vendor/perfect-scrollbar/perfect-scrollbar.min.js') }}"></script>
 	<script>
-		$('.js-pscroll').each(function(){
-			$(this).css('position','relative');
-			$(this).css('overflow','hidden');
+		$('.js-pscroll').each(function() {
+			$(this).css('position', 'relative');
+			$(this).css('overflow', 'hidden');
 			var ps = new PerfectScrollbar(this, {
 				wheelSpeed: 1,
 				scrollingThreshold: 1000,
 				wheelPropagation: false,
 			});
 
-			$(window).on('resize', function(){
+			$(window).on('resize', function() {
 				ps.update();
 			})
 		});

@@ -17,99 +17,148 @@
 
         @include('admin.header')
 
-      <!-- Begin Page Content -->
-      <div class="container-fluid">
+        <!-- Begin Page Content -->
+        <div class="container-fluid">
 
-        <!-- Page Heading -->
-        <div class="d-sm-flex align-items-center justify-content-between mb-4">
-          <h1 class="h3 mb-0 text-gray-800">Generate Reports</h1>
-          <!--          <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i-->
-          <!--                  class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>-->
-        </div>
+          <!-- Page Heading -->
+          <div class="d-sm-flex align-items-center justify-content-between mb-4">
+            <h1 class="h3 mb-0 text-gray-800">Generate Reports</h1>
+            <!--          <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i-->
+            <!--                  class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>-->
+          </div>
 
-        <!-- Content Row -->
-        <div class="row">
+          <!-- Content Row -->
+          <div class="row">
 
-          <!-- Earnings (Monthly) Card Example -->
-          <div class="col-xl-6 col-md-6 mb-4">
-            <div class="card border-left-primary shadow h-100 py-2">
-              <div class="card-body">
-                <div class="row no-gutters align-items-center">
-                  <div class="col mr-2">
-                    <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Stock</div>
-                    <div class="h5 mb-0 font-weight-bold text-gray-800">Reports</div>
-                  </div>
-                  <div class="col-auto">
-                    <a class="fas fa-clipboard-list fa-2x text-gray-300" href="{% url 'show_report_stock' %}"></a>
+            <!-- Earnings (Monthly) Card Example -->
+            <!-- <div class="col-xl-6 col-md-6 mb-4">
+              <div class="card border-left-primary shadow h-100 py-2">
+                <div class="card-body">
+                  <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                      <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Stock</div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800">Reports</div>
+                    </div>
+                    <div class="col-auto">
+                      <a class="fas fa-clipboard-list fa-2x text-gray-300" href="{% url 'show_report_stock' %}"></a>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          </div>
+            </div> -->
 
-          <!-- Earnings (Monthly) Card Example -->
-          <div class="col-xl-6 col-md-6 mb-4">
-            <div class="card border-left-success shadow h-100 py-2">
-              <div class="card-body">
-                <div class="row no-gutters align-items-center">
-                  <div class="col mr-2">
-                    <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Product</div>
-                    <div class="h5 mb-0 font-weight-bold text-gray-800">Reports</div>
-                  </div>
-                  <div class="col-auto">
-                    <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+            <!-- Earnings (Monthly) Card Example -->
+            <!-- <div class="col-xl-6 col-md-6 mb-4">
+              <div class="card border-left-success shadow h-100 py-2">
+                <div class="card-body">
+                  <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                      <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Product</div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800">Reports</div>
+                    </div>
+                    <div class="col-auto">
+                      <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          </div>
+            </div> -->
 
-          <!-- Earnings (Monthly) Card Example -->
-          <div class="col-xl-6 col-md-6 mb-4">
-            <div class="card border-left-info shadow h-100 py-2">
-              <div class="card-body">
-                <div class="row no-gutters align-items-center">
-                  <div class="col mr-2">
-                    <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Tasks</div>
+            <!-- Earnings (Monthly) Card Example -->
+            <!-- <div class="col-xl-6 col-md-6 mb-4">
+              <div class="card border-left-info shadow h-100 py-2">
+                <div class="card-body">
+                  <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                      <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Tasks</div>
+                      <div class="row no-gutters align-items-center">
+                        <div class="col-auto">
+                          <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">Reports</div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-auto">
+                      <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div> -->
+
+            <!-- Pending Requests Card Example -->
+            <!-- <div class="col-xl-6 col-md-6 mb-4">
+                <div class="card border-left-warning shadow h-100 py-2">
+                  <div class="card-body">
                     <div class="row no-gutters align-items-center">
+                      <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Customers</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">Reports</div>
+                      </div>
                       <div class="col-auto">
-                        <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">Reports</div>
+                        <a class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" href="{{route('users_pdf')}}"><i class="fas fa-download fa-sm text-white-50"></i> pdf</a>
+                        <a class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" href="{{route('users_excel')}}"><i class="fas fa-download fa-sm text-white-50"></i> excel</a>
                       </div>
                     </div>
                   </div>
+                </div>
+              </div> -->
+            <div class="col-xl-10 col-md-6 mb-4">
+              <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                  <h6 class="m-0 font-weight-bold text-primary">Sales Report</h6>
+                </div>
+                <div class="card-body">
                   <div class="col-auto">
-                    <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                    <form method="post" action="{{route('sales_pdf')}}">
+                      @csrf
+                      <div class="row">
+                        <div class="card-body">
+                          From : <input placeholder="Selected date" type="date" id="date" name="f_date" class="form-control datepicker">
+                        </div>
+                        <div class="card-body">
+                          To : <input placeholder="Selected date" type="date" id="date" name="t_date" class="form-control datepicker">
+                        </div>
+                      </div>
+                      <center>
+                        <div class="card-body">
+                          <!-- <a class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" href="{{route('users_pdf')}}"><i class="fas fa-download fa-sm text-white-50"></i> pdf</a>
+                      <a class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" href="{{route('users_excel')}}"><i class="fas fa-download fa-sm text-white-50"></i> excel</a> -->
+                          <!-- <a class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" href="{{route('sales_pdf')}}"><i class="fas fa-download fa-sm text-white-50"></i> pdf</a> -->
+                          <button class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" type="submit"><i class="fas fa-download fa-sm text-white-50"></i> pdf</button>
+                        </div>
+                      </center>
+                    </form>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-
-          <!-- Pending Requests Card Example -->
-          <div class="col-xl-6 col-md-6 mb-4">
-            <div class="card border-left-warning shadow h-100 py-2">
-              <div class="card-body">
-                <div class="row no-gutters align-items-center">
-                  <div class="col mr-2">
-                    <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Customers</div>
-                    <div class="h5 mb-0 font-weight-bold text-gray-800">Reports</div>
-                  </div>
-                  <div class="col-auto">
-                    <a class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" href="{{route('users_pdf')}}"><i class="fas fa-download fa-sm text-white-50"></i> pdf</a>
-                    <a class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" href="{{route('users_excel')}}"><i  class="fas fa-download fa-sm text-white-50"></i> excel</a>
-                  </div>
+            <div class="col-xl-10 col-md-6 mb-4">
+              <div class="card shadow mb-4">
+                <!-- Card Header - Dropdown -->
+                <div class="card-header py-3">
+                  <h6 class="m-0 font-weight-bold text-primary">All Users Details</h6>
                 </div>
+                <center>
+                  <!-- Card Body -->
+                  <div class="card-body">
+                    <div class="col-auto">
+                      <div class="card-body">
+                        <a class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" href="{{route('users_pdf')}}"><i class="fas fa-download fa-sm text-white-50"></i> pdf</a>
+                        <a class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" href="{{route('users_excel')}}"><i class="fas fa-download fa-sm text-white-50"></i> excel</a>
+                      </div>
+                    </div>
+                  </div>
+                </center>
               </div>
             </div>
           </div>
         </div>
+        <!-- /.container-fluid -->
+
       </div>
-      <!-- /.container-fluid -->
+      <!-- End of Main Content -->
 
-    </div>
-    <!-- End of Main Content -->
-
-    @include('admin.footer')
+      @include('admin.footer')
 
     </div>
     <!-- End of Content Wrapper -->
@@ -123,8 +172,7 @@
   </a>
 
   <!-- Logout Modal-->
-  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-    aria-hidden="true">
+  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">

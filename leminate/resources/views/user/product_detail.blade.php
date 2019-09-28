@@ -59,16 +59,16 @@
 								Quantity Available : {{$stock->available}}
 							</p>
 							<p class="stext-102 cl3 p-t-23">
-								Category : {{$product->cat_id}}
+								Category : {{$category->name}}
 							</p>
 							<p class="stext-102 cl3 p-t-23">
-								Color : {{$product->color_id}}
+								Color : {{$color->name}}
 							</p>
 							<p class="stext-102 cl3 p-t-23">
-								Design : {{$product->design_id}}
+								Design : {{$design->name}}
 							</p>
 							<p class="stext-102 cl3 p-t-23">
-								Supplier : {{$product->supplier_id}}
+								Supplier : {{$supplier->name}}
 							</p>
 
 							<!--  -->

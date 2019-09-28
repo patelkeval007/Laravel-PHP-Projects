@@ -11,9 +11,11 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('/');
+// Route::get('/', function () {
+//     return view('/visitor/welcome');
+// })->name('/');
+
+Route::get('/', 'Visitor\VisitorController@index')->name('/');
 
 Auth::routes();
 
@@ -64,8 +66,13 @@ Route::get('/adminhome/show_stock', 'Admin\StockController@show_stock')->name('s
 Route::get('/adminhome/show_out_stock', 'Admin\StockController@show_out_stock')->name('show_out_stock')->middleware('authenticateAdmin');
 // Report
 Route::get('/adminhome/show_report', 'Admin\ReportController@show_report')->name('show_report')->middleware('authenticateAdmin');
+
 Route::get('/adminhome/users_pdf', 'Admin\ReportController@users_pdf')->name('users_pdf')->middleware('authenticateAdmin');
 Route::get('/adminhome/users_excel', 'Admin\ReportController@users_excel')->name('users_excel')->middleware('authenticateAdmin');
+
+// Route::get('/adminhome/sales_pdf', 'Admin\ReportController@sales_pdf')->name('sales_pdf')->middleware('authenticateAdmin');
+Route::post('/adminhome/sales_pdf', 'Admin\ReportController@sales_pdf')->name('sales_pdf')->middleware('authenticateAdmin');
+// Route::post('/adminhome/sales_excel', 'Admin\ReportController@sales_excel')->name('sales_excel')->middleware('authenticateAdmin');
 
 
 // ================================User================================
@@ -89,3 +96,19 @@ Route::post('/userhome/my_account/edit_password', 'User\MyAccountController@edit
 Route::get('/userhome/contact', 'User\ContactController@index')->name('contact')->middleware('authenticateUser');;
 // about
 Route::get('/userhome/about', 'User\AboutController@index')->name('about')->middleware('authenticateUser');;
+
+
+
+// ================================Visitor================================
+// index
+Route::get('/visitor', 'Visitor\VisitorController@index')->name('visitor');
+// Product
+Route::post('/visitor/product', 'Visitor\ProductController@product')->name('v_product');
+// ProductDetails
+Route::post('/visitor/product_detail', 'Visitor\ProductDetailController@product_detail')->name('v_product_detail');
+Route::post('/visitor/product_add_to_cart', 'Visitor\ProductDetailController@product_add_to_cart')->name('v_product_add_to_cart');
+
+// contact
+Route::get('/visitor/contact', 'Visitor\ContactController@index')->name('v_contact');
+// about
+Route::get('/visitor/about', 'Visitor\AboutController@index')->name('v_about');

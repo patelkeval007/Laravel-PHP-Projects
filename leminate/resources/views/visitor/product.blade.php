@@ -1,10 +1,10 @@
-@extends('user.base')
+@extends('visitor.base')
 
 @section('base')
 
 <body class="animsition">
 
-	@include('user.header')
+	@include('visitor.header')
 
 	<!-- Product -->
 	<div class="bg0 m-t-23 p-b-140">
@@ -13,7 +13,7 @@
 			<div class="flex-w flex-sb-m p-b-52">
 				<div class="flex-w flex-l-m filter-tope-group m-tb-10">
 					@foreach ($categories as $category)
-					<form style="display: inline" method="post" action="{{route('v_product')}}">
+					<form style="display: inline" method="post" action="{{route('product')}}">
 						@csrf
 						<input type="hidden" name="cat_id" value="{{$category->id}}">
 						<button type="submit" class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 how-active1"
@@ -34,7 +34,7 @@
 						<div class="block2-pic hov-img0">
 							<img src="{{ asset('admin/img/products/'.$product->image) }}" alt="IMG-PRODUCT">
 							<form style="display: inline" id="firstForm" method="post"
-								action="{{route('product_detail') }}">
+								action="{{route('v_product_detail') }}">
 								@csrf
 								<input type="hidden" name="id" value="{{$product->id}}">
 								<button type="submit"
@@ -63,7 +63,7 @@
 		</div>
 	</div>
 
-	@include('user.footer')
+	@include('visitor.footer')
 
 	<!-- Back to top -->
 	<div class="btn-back-to-top" id="myBtn">

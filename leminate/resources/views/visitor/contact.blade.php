@@ -1,63 +1,100 @@
-@extends('user.base')
+@extends('visitor.base')
 
 @section('base')
 
 <body class="animsition">
 
-	@include('user.header')
+	@include('visitor.header')
 
 	<!-- Title page -->
 	<section class="bg-img1 txt-center p-lr-15 p-tb-92">
 		<h2 class="ltext-105 txt-center">
-			About
+			Contact Us
 		</h2>
 	</section>
 
 
 	<!-- Content page -->
-	<div class="container">
-		<div class="row p-b-148">
-			<div class="col-md-7 col-lg-8">
-				<div class="p-t-7 p-r-85 p-r-15-lg p-r-0-md">
-					<h3 class="mtext-111 cl2 p-b-16">
-						Our Story
-					</h3>
+	<section class="bg0 p-b-116">
+		<div class="container">
+			<div class="flex-w flex-tr">
+				<div class="size-210 bor10 p-lr-70 p-t-55 p-b-70 p-lr-15-lg w-full-md">
+					<form>
+						<h4 class="mtext-105 cl2 txt-center p-b-30">
+							Send Us A Message
+						</h4>
 
-					<p class="stext-113 cl6 p-b-26">
-						Laminates uses a unique technology in which special resins impart extra strength to its
-						laminates, making them highly resistant to scratch and abrasion. Laminates' exotic range
-						of decorative laminates is characterized by higher color fastness and the best bonding
-						properties with substrates available in the market today. Laminates is a product from the
-						house of Ply.
+						<div class="bor8 m-b-20 how-pos4-parent">
+							<input class="stext-111 cl2 plh3 size-116 p-l-62 p-r-30" type="text" name="email"
+								placeholder="Your Email Address">
+							<img class="how-pos4 pointer-none" src="{{ asset('user/images/icons/icon-email.png') }}" alt="ICON">
+						</div>
 
-						Ply has been the front-runner in applying innovation at work. This simple philosophy has
-						been the cornerstone of all our processes and technologies. It has led us to design and deliver
-						contemporary lifestyle statements that have become synonymous with modern living. Our award
-						winning products have been redefining Indian realty and bringing about a paradigm shift in the
-						concept of living spaces.  Plyboards (I) Ltd. (CPIL), our mother concern, came into
-						existence in 1986 as a result of the foresightedness of two visionaries, Mr. Sajjan Bhajanka and
-						Mr. Sanjay Agarwal. Since then, the company has taken giant strides and is today, the largest
-						seller of multi-use plywood and decorative veneers in the Indian organized plywood market.
-					</p>
+						<div class="bor8 m-b-30">
+							<textarea class="stext-111 cl2 plh3 size-120 p-lr-28 p-tb-25" name="msg"
+								placeholder="How Can We Help?"></textarea>
+						</div>
 
-					<p class="stext-113 cl6 p-b-26">
-						Any questions? Let us know in store at 8th floor, 379 orelly flats, Bopal, A'bad 10018 or call
-						us on (+91) 96716 68790
-					</p>
+						<button class="flex-c-m stext-101 cl0 size-121 bg3 bor1 hov-btn3 p-lr-15 trans-04 pointer">
+							Submit
+						</button>
+					</form>
 				</div>
-			</div>
 
-			<div class="col-11 col-md-5 col-lg-4 m-lr-auto">
-				<div class="how-bor1 ">
-					<div class="hov-img0">
-						<img src="{{ asset('user/images/about-01.jpg') }}" alt="IMG">
+				<div class="size-210 bor10 flex-w flex-col-m p-lr-93 p-tb-30 p-lr-15-lg w-full-md">
+					<div class="flex-w w-full p-b-42">
+						<span class="fs-18 cl5 txt-center size-211">
+							<span class="lnr lnr-map-marker"></span>
+						</span>
+
+						<div class="size-212 p-t-2">
+							<span class="mtext-110 cl2">
+								Address
+							</span>
+
+							<p class="stext-115 cl6 size-213 p-t-18">
+								8th floor, 379 orelly flats, Bopal, A'bad - 10018
+							</p>
+						</div>
+					</div>
+
+					<div class="flex-w w-full p-b-42">
+						<span class="fs-18 cl5 txt-center size-211">
+							<span class="lnr lnr-phone-handset"></span>
+						</span>
+
+						<div class="size-212 p-t-2">
+							<span class="mtext-110 cl2">
+								Lets Talk
+							</span>
+
+							<p class="stext-115 cl1 size-213 p-t-18">
+								+91 96716 68790
+							</p>
+						</div>
+					</div>
+
+					<div class="flex-w w-full">
+						<span class="fs-18 cl5 txt-center size-211">
+							<span class="lnr lnr-envelope"></span>
+						</span>
+
+						<div class="size-212 p-t-2">
+							<span class="mtext-110 cl2">
+								Sale Support
+							</span>
+
+							<p class="stext-115 cl1 size-213 p-t-18">
+								contact@leminates.com
+							</p>
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>
+	</section>
 
-	@include('user.footer')
+	@include('visitor.footer')
 
 	<!-- Back to top -->
 	<div class="btn-back-to-top" id="myBtn">
@@ -65,6 +102,7 @@
 			<i class="zmdi zmdi-chevron-up"></i>
 		</span>
 	</div>
+
 	<!--===============================================================================================-->
 	<script src="{{ asset('user/vendor/jquery/jquery-3.2.1.min.js') }}"></script>
 	<!--===============================================================================================-->
@@ -74,6 +112,7 @@
 	<script src="{{ asset('user/vendor/bootstrap/js/bootstrap.min.js') }}"></script>
 	<!--===============================================================================================-->
 	<script src="{{ asset('user/vendor/select2/select2.min.js') }}"></script>
+
 	<script>
 		$(".js-select2").each(function(){
 			$(this).select2({
@@ -104,6 +143,7 @@
 
 	<!--===============================================================================================-->
 	<script src="{{ asset('user/js/main.js') }}"></script>
+
 </body>
 
 @endsection
